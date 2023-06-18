@@ -8,6 +8,17 @@
   <body>
     <div class="main-container">
       <h1>Timer</h1>
+      <div class="timer-container">
+        <span class="text-large" data-js="timer-minutes">00</span>
+        <span class="text-large">:</span>
+        <span class="text-large" data-js="timer-seconds">00</span>
+        <span class="text-large">:</span>
+        <span class="text" data-js="timer-milliseconds">000</span>
+      </div>
+      <div>
+        <button data-js="start" type="button">Start</button>
+        <button data-js="stop" type="button">Stop</button>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

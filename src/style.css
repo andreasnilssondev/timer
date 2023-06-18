@@ -1,8 +1,43 @@
 :root {
   font-family: Arial, sans-serif;
+
   --main-bg-color: #FFFFFF;
+
+  --font-size-medium: 3rem;
+  --font-size-large: 6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--main-bg-color);
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-size: var(--font-size-medium);
+}
+
+.text-large {
+  font-size: var(--font-size-large);
+}
+
+
