@@ -1,0 +1,8 @@
+:root {
+  font-family: Arial, sans-serif;
+  --main-bg-color: #FFFFFF;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
