@@ -15,6 +15,9 @@
 
   --font-size-h1: min(10vh, 10vw);
   --font-size-large-responsive: min(15vh, 15vw);
+
+  --button-size-default: min(5vh, 5vw);
+  --button-size-large: min(20vh, 20vw);
 }
 
 /**
@@ -94,27 +97,59 @@ button {
 }
 
 .numbers-item {
-  /* prevent numbers from jumping around */
+  /* prevent numbers from shifting position when changing */
   width: calc(var(--font-size-large-responsive) + min(2dvw, 2dvh));
 }
 
-.button {
-  background-color: var(--text-color-main);
-  padding: 1rem;
-  border-radius: 999rem;
-  width: min(5vh, 5vw);
-  height: min(5vh, 5vw);
-}
-
-.button--large {
-  width: min(20vh, 20vw);
-  height: min(20vh, 20vw);
+.button-container {
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
+  align-items: flex-end;
   justify-content: center;
 }
 
-.paused .icon, .stopped .icon {
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text-color-main);
+  padding: 1rem;
+  border-radius: 999rem;
+  width: var(--button-size-default);
+  height: var(--button-size-default);
+}
+
+.button--danger {
+  background-color: var(--text-color-danger);
+}
+
+.button--large {
+  width: var(--button-size-large);
+  height: var(--button-size-large);
+}
+
+
+/**
+ * ====================
+ * ICONS
+ * ====================
+ */
+
+.icon-stop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 30%;
+  height: 30%;
+  background-color: var(--text-color-secondary);
+
+}
+
+.icon-play {
   display: flex;
   position: relative;
   width: 100%;
@@ -123,7 +158,7 @@ button {
   overflow: hidden;
 }
 
-.paused .icon::before, .stopped .icon::before {
+.icon-play::before {
   content: '';
   position: absolute;
   left: 0;
@@ -135,7 +170,7 @@ button {
   transform-origin: 0 0;
 }
 
-.paused .icon::after, .stopped .icon::after {
+.icon-play::after {
   content: '';
   position: absolute;
   left: 0;
@@ -147,14 +182,14 @@ button {
   transform-origin: bottom left;
 }
 
-.started .icon {
+.icon-pause {
   display: block;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.started .icon::before {
+.icon-pause::before {
   content: '';
   position: absolute;
   left: 20%;
@@ -164,7 +199,7 @@ button {
   background-color: var(--text-color-secondary);
 }
 
-.started .icon::after {
+.icon-pause::after {
   content: '';
   position: absolute;
   right: 20%;
@@ -194,26 +229,4 @@ button {
   margin-left: 25%;
 }
 
-.button-container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
 
-.reset {
-  display: block;
-  position: relative;
-  background-color: var(--text-color-danger);
-}
-
-.reset .icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 30%;
-  height: 30%;
-  background-color: var(--text-color-secondary);
-}

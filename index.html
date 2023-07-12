@@ -16,27 +16,27 @@
         <span class="numbers-item" data-js="timer-milliseconds">00</span>
       </div>
       <div class="button-container" data-js="state" data-state="stopped">
-        <button class="button reset" data-js="reset" type="button">
-          <span class="sr-only">Reset</span>
-          <span class="icon"></span>
-        </button>
         <button
+          type="button"
           class="button button--large"
           data-js="start-pause"
-          type="button"
         >
           <span class="stopped">
-            <span class="icon"></span>
             <span class="sr-only">Start</span>
+            <span class="icon-play"></span>
           </span>
           <span class="paused">
-            <span class="icon"></span>
             <span class="sr-only">Resume</span>
+            <span class="icon-play"></span>
           </span>
           <span class="started">
-            <span class="icon"></span>
             <span class="sr-only">Pause</span>
+            <span class="icon-pause"></span>
           </span>
+        </button>
+        <button type="button" class="button button--danger" data-js="reset">
+          <span class="sr-only">Reset</span>
+          <span class="icon-stop"></span>
         </button>
       </div>
     </div>
