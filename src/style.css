@@ -36,6 +36,11 @@ body {
   color: var(--text-color-main);
 }
 
+button {
+  border: 0;
+  background-color: transparent;
+}
+
 /**
  * ====================
  * HELPERS
@@ -70,40 +75,30 @@ body {
   padding: 1rem;
 }
 
-.timer-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
-}
-
 /* ====================
  * COMPONENTS
  * ====================
  */
 
-.title {
+.h1 {
   text-align: center;
   font-size: var(--font-size-h1);
 }
 
-.text {
-  font-size: var(--font-size-h1);
-  line-height: 1;
-}
-
-.text--large {
+.numbers {
+  display: flex;
+  justify-content: center;
   font-size: var(--font-size-large-responsive);
+  line-height: 1;
+  text-align: center;
 }
 
-.text--numbers {
+.numbers-item {
   /* prevent numbers from jumping around */
-  width: 10rem;
-  text-align: center;
+  width: calc(var(--font-size-large-responsive) + min(2dvw, 2dvh));
 }
 
 .button {
-  border: 0;
   background-color: var(--text-color-main);
   padding: 1rem;
   border-radius: 999rem;
