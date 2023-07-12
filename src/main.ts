@@ -1,4 +1,4 @@
-import { getHtmlElement } from './getElement';
+import { getHtmlElement } from './getHtmlElement';
 import { formatTime } from './formatTime';
 import './style.css';
 
@@ -15,13 +15,13 @@ let timePassed = 0;
 let isRunning = false;
 
 function render() {
-  timerMinutesElement.innerHTML = formatTime((timePassed / 1000 / 60) % 60);
-  timerSecondsElement.innerHTML = formatTime((timePassed / 1000) % 60);
-  timermsElement.innerHTML = formatTime((timePassed % 1000) / 10);
+  timerMinutesElement.textContent = formatTime((timePassed / 1000 / 60) % 60);
+  timerSecondsElement.textContent = formatTime((timePassed / 1000) % 60);
+  timermsElement.textContent = formatTime((timePassed % 1000) / 10);
 }
 
 function loop() {
-  if (isRunning === false) {
+  if (!isRunning) {
     return;
   }
 
