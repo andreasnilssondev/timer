@@ -3,10 +3,11 @@
 
   --main-bg-color: #74a4b6;
   --main-text-color: #243556;
+  --danger-text-color: #dd5738;
 
-  --main-icon-color: #FFFFFF;
+  --main-icon-color: #E7F7FE;
 
-  --font-size-h1: 3rem;
+  --font-size-h1: min(10vh, 10vw);
   --font-size-large-responsive: min(20vh, 20vw);
 }
 
@@ -175,6 +176,7 @@ body {
 .reset {
   display: block;
   position: relative;
+  background-color: var(--danger-text-color);
 }
 
 .reset .icon {
