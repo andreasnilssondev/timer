@@ -1,6 +1,5 @@
 import { getHtmlElement } from './getHtmlElement';
 import { formatTime } from './formatTime';
-import './style.css';
 
 const startPauseButton = getHtmlElement<HTMLButtonElement>('start-pause')!;
 const resetButton = getHtmlElement<HTMLButtonElement>('reset')!;
