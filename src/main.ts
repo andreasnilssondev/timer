@@ -1,19 +1,13 @@
+import { getHtmlElement } from './getElement';
+import { formatTime } from './formatTime';
 import './style.css';
 
-const startPauseButton = document.querySelector<HTMLButtonElement>(
-  '[data-js="start-pause"]'
-)!;
-const resetButton =
-  document.querySelector<HTMLButtonElement>('[data-js="reset"]')!;
-const timerMinutesElement = document.querySelector<HTMLSpanElement>(
-  '[data-js="timer-minutes"]'
-)!;
-const timerSecondsElement = document.querySelector<HTMLSpanElement>(
-  '[data-js="timer-seconds"]'
-)!;
-const timerMilliSecondsElement = document.querySelector<HTMLSpanElement>(
-  '[data-js="timer-milliseconds"]'
-)!;
+const startPauseButton = getHtmlElement<HTMLButtonElement>('start-pause')!;
+const resetButton = getHtmlElement<HTMLButtonElement>('reset')!;
+const timerMinutesElement = getHtmlElement<HTMLSpanElement>('timer-minutes')!;
+const timerSecondsElement = getHtmlElement<HTMLSpanElement>('timer-seconds')!;
+const timermsElement = getHtmlElement<HTMLSpanElement>('timer-milliseconds')!;
+const stateElement = getHtmlElement<HTMLSpanElement>('state')!;
 
 let startTime: number | null = null;
 let pauseTime: number | null = null;
@@ -21,15 +15,9 @@ let timePassed = 0;
 let isRunning = false;
 
 function render() {
-  timerMinutesElement.innerHTML = Math.floor((timePassed / 1000 / 60) % 60)
-    .toString()
-    .padStart(2, '0');
-  timerSecondsElement.innerHTML = Math.floor((timePassed / 1000) % 60)
-    .toString()
-    .padStart(2, '0');
-  timerMilliSecondsElement.innerHTML = Math.floor(timePassed % 1000)
-    .toString()
-    .padStart(3, '0');
+  timerMinutesElement.innerHTML = formatTime((timePassed / 1000 / 60) % 60);
+  timerSecondsElement.innerHTML = formatTime((timePassed / 1000) % 60);
+  timermsElement.innerHTML = formatTime((timePassed % 1000) / 10);
 }
 
 function loop() {
@@ -49,6 +37,7 @@ function loop() {
   }
 
   if (pauseTime !== null) {
+    // Handle the pause, by removing the time passed during the pause from the start time
     startTime = now - timePassed;
     pauseTime = null;
   }
@@ -60,25 +49,29 @@ function loop() {
 
 function pause() {
   isRunning = false;
-  startPauseButton.innerHTML = 'Resume';
+  stateElement.setAttribute('data-state', 'paused');
   pauseTime = new Date().getTime();
   startPauseButton.addEventListener('click', start, { once: true });
 }
 
 function start() {
   isRunning = true;
-  startPauseButton.innerHTML = 'Pause';
+  stateElement.setAttribute('data-state', 'started');
   startPauseButton.addEventListener('click', pause, { once: true });
   requestAnimationFrame(loop);
 }
 
-startPauseButton.addEventListener('click', start, { once: true });
-resetButton.addEventListener('click', () => {
-  // TODO: fix issues
+function cleanup() {
+  startPauseButton.removeEventListener('click', pause);
+  startPauseButton.removeEventListener('click', start);
+  startPauseButton.addEventListener('click', start, { once: true });
   isRunning = false;
-  startPauseButton.innerHTML = 'Start';
+  stateElement.setAttribute('data-state', 'stopped');
   startTime = null;
   pauseTime = null;
   timePassed = 0;
   render();
-});
+}
+
+resetButton.addEventListener('click', cleanup);
+startPauseButton.addEventListener('click', start, { once: true });

@@ -7,17 +7,42 @@
   </head>
   <body>
     <div class="main-container">
-      <h1>Timer</h1>
+      <h1 class="title">Timer</h1>
       <div class="timer-container">
-        <span class="text-large" data-js="timer-minutes">00</span>
-        <span class="text-large">:</span>
-        <span class="text-large" data-js="timer-seconds">00</span>
-        <span class="text-large">:</span>
-        <span class="text" data-js="timer-milliseconds">000</span>
+        <span class="text text--large text--numbers" data-js="timer-minutes"
+          >00</span
+        >
+        <span class="text text--large">:</span>
+        <span class="text text--large text--numbers" data-js="timer-seconds"
+          >00</span
+        >
+        <span class="text text--large">:</span>
+        <span
+          class="text text--large text--numbers"
+          data-js="timer-milliseconds"
+          >00</span
+        >
       </div>
-      <div>
-        <button data-js="start-pause" type="button">Start</button>
-        <button data-js="reset" type="button">Reset</button>
+      <div data-js="state" data-state="stopped">
+        <button
+          class="button button--large"
+          data-js="start-pause"
+          type="button"
+        >
+          <span class="stopped">
+            <span class="icon"></span>
+            <span class="text sr-only">Start</span>
+          </span>
+          <span class="paused">
+            <span class="icon"></span>
+            <span class="text sr-only">Resume</span>
+          </span>
+          <span class="started">
+            <span class="icon"></span>
+            <span class="text sr-only">Pause</span>
+          </span>
+        </button>
+        <button class="button" data-js="reset" type="button">Reset</button>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
