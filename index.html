@@ -23,7 +23,11 @@
           >00</span
         >
       </div>
-      <div data-js="state" data-state="stopped">
+      <div class="button-container" data-js="state" data-state="stopped">
+        <button class="button reset" data-js="reset" type="button">
+          <span class="text sr-only">Reset</span>
+          <span class="icon"></span>
+        </button>
         <button
           class="button button--large"
           data-js="start-pause"
@@ -42,7 +46,6 @@
             <span class="text sr-only">Pause</span>
           </span>
         </button>
-        <button class="button" data-js="reset" type="button">Reset</button>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
