@@ -106,6 +106,7 @@ button {
   flex-direction: row-reverse;
   align-items: flex-end;
   justify-content: center;
+  transform: translateX(max(-5dvw, -5dvh))
 }
 
 .button {
